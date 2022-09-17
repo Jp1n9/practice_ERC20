@@ -45,7 +45,12 @@ contract ERC20 is EIP712 {
     }
     function pause() external{
         require(msg.sender == _owner,"you are not owner!!");
-        _pause = true;
+        if(_pause == true) {
+            _pause = false;
+        }
+        else {
+            _pause  = true;
+        }
     }
 
     function approve(address to_,uint256 amount_)public  {
